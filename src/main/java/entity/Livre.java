@@ -50,7 +50,7 @@ public class Livre {
 	}
 
 	public String toString() {
-		String s = "" + this.getId() + " -> " + this.getTitre() + " : " + this.getAuteur();
+		String s = "livre/" + this.getId() + " -> " + this.getTitre() + " : " + this.getAuteur();
 		return s;
 	}
 }

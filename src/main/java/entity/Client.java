@@ -61,7 +61,7 @@ public class Client {
 		emprunts =new HashSet<Emprunt>();
 	}
 	public String toString() {
-		String s = this.getId()+" -> "+this.getNom()+" "+this.getPrenom();
+		String s = "client/"+this.getId()+" -> "+this.getNom()+" "+this.getPrenom();
 		return s;
 	}
 

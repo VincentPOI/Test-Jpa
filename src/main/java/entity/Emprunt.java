@@ -78,7 +78,7 @@ public class Emprunt {
 		livres = new HashSet<Livre>();
 	}
 	public String toString(){
-		String s = this.getId()+" -> "+" début : "+this.getDateDebut()+ " , fin : "+this.getDateFin();
+		String s = "enprunt/"+this.getId()+" -> "+" début : "+this.getDateDebut()+ " , fin : "+this.getDateFin();
 		return s;
 	}
 
