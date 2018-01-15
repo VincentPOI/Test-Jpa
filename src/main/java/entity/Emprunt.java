@@ -1,11 +1,15 @@
 package entity;
 
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -23,7 +27,15 @@ public class Emprunt {
 	
 	@ManyToOne
 	@JoinColumn(name = "ID_CLIENT", nullable = false)
-	private int idClient;
+	private Client client;
+	
+	@ManyToMany
+	@JoinTable(name="COMPO",
+	joinColumns= @JoinColumn(name="ID_EMP", referencedColumnName="ID"),
+	inverseJoinColumns= @JoinColumn(name="ID_LIV", referencedColumnName="ID")
+	)
+	private Set<Livre> livres;
+	
 	
 	public int getId() {
 		return id;
@@ -49,15 +61,23 @@ public class Emprunt {
 	public void setDelai(int delai) {
 		this.delai = delai;
 	}
-	public int getIdClient() {
-		return idClient;
+	
+	public Client getClient() {
+		return client;
 	}
-	public void setIdClient(int idClient) {
-		this.idClient = idClient;
+	public void setClient(Client client) {
+		this.client = client;
+	}
+	public Set<Livre> getLivres() {
+		return livres;
+	}
+	public void setLivres(Set<Livre> livres) {
+		this.livres = livres;
 	}
 	public Emprunt() {
+		livres = new HashSet<Livre>();
 	}
-	public String ToString(){
+	public String toString(){
 		String s = this.getId()+" -> "+" début : "+this.getDateDebut()+ " , fin : "+this.getDateFin();
 		return s;
 	}

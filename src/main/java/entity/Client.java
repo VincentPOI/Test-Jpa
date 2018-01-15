@@ -25,7 +25,7 @@ public class Client {
 	@Column(name = "PRENOM", length = 50, nullable = false)
 	private String prenom;
 	
-	@OneToMany(mappedBy="idClient")
+	@OneToMany(mappedBy="client")
 	private Set<Emprunt> emprunts;
 
 	public int getId() {
@@ -46,6 +46,15 @@ public class Client {
 
 	public String getPrenom() {
 		return prenom;
+	}
+	
+
+	public Set<Emprunt> getEmprunts() {
+		return emprunts;
+	}
+
+	public void setEmprunts(Set<Emprunt> emprunts) {
+		this.emprunts = emprunts;
 	}
 
 	public Client() {

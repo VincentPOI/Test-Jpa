@@ -1,8 +1,13 @@
 package entity;
 
+
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -15,6 +20,7 @@ public class Livre {
 
 	@Column(name = "AUTEUR", length = 50, nullable = false)
 	private String auteur;
+	
 
 	public String getTitre() {
 		return titre;
@@ -43,7 +49,7 @@ public class Livre {
 	public Livre() {
 	}
 
-	public String ToString() {
+	public String toString() {
 		String s = "" + this.getId() + " -> " + this.getTitre() + " : " + this.getAuteur();
 		return s;
 	}
