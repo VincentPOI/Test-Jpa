@@ -7,6 +7,8 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -20,6 +22,7 @@ import javax.persistence.Table;
 public class Clientb {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	@Column(name = "NOM")
 	private String nom;
@@ -40,7 +43,43 @@ public class Clientb {
 	joinColumns= @JoinColumn(name="ID_CLIENT", referencedColumnName="ID"),
 	inverseJoinColumns= @JoinColumn(name="ID_COMPTE", referencedColumnName="ID")
 	)
-	private Set<Compte> comptes;
+	private Set<Compte> comptes = new HashSet<Compte>();
+
+	
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public Banque getBanque() {
+		return banque;
+	}
+
+	public void setBanque(Banque banque) {
+		this.banque = banque;
+	}
+
+	public Adresse getAdresse() {
+		return adresse;
+	}
+
+	public void setAdresse(Adresse adresse) {
+		this.adresse = adresse;
+	}
+
+	
+
+	public Set<Compte> getComptes() {
+		return comptes;
+	}
+
+	public void setComptes(Set<Compte> comptes) {
+		this.comptes = comptes;
+	}
 
 	public String getNom() {
 		return nom;

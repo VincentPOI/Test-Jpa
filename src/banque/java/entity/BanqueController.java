@@ -1,4 +1,4 @@
-
+package entity;
 import java.time.LocalDate;
 import java.util.HashSet;
 
@@ -9,12 +9,6 @@ import javax.persistence.Persistence;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import entity.Adresse;
-import entity.Banque;
-import entity.Clientb;
-import entity.Compte;
-import entity.LivretA;
 
 
 public class BanqueController {
@@ -48,8 +42,10 @@ public class BanqueController {
 		c1.setDateNaissance(LocalDate.of(1994, 11, 8));
 		c1.setAdresse(a1);
 		c1.setBanque(b1);
-		c1.getComptes().add(cmpt1);
-		c1.getComptes().add(cmpt2);
+		HashSet<Compte> listeb = new HashSet<Compte>();
+		listeb.add(cmpt1);
+		listeb.add(cmpt2);
+		c1.setComptes(listeb);
 		
 		EntityTransaction transaction = em.getTransaction();
 		transaction.begin();
@@ -57,6 +53,7 @@ public class BanqueController {
 		em.persist(cmpt1);
 		em.persist(cmpt2);
 		em.persist(b1);
+		em.persist(a1);
 		transaction.commit();
 		
 		
